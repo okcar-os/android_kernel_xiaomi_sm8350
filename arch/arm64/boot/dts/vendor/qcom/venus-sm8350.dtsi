@@ -503,10 +503,15 @@ And public attribution of xiaomi platforms(like J2 and so and)
 };
 
 &usb2_phy0 {
+	mi,factory-usb;
+	qcom,param-override-seq-fac =
+	<0xa5 0x6c	/* override_x0 */
+	 0x0e 0x70	/* override_x1 */
+	 0x04 0x74>;	/* override x2 */
 	qcom,param-override-seq =
-	<0xc6 0x6c
-	 0x0f 0x70
-	 0x00 0x74>;
+	<0x27 0x6c	/* override_x0 */
+	 0x0b 0x70	/* override_x1 */
+	 0x08 0x74>;	/* override x2 */
 };
 
 &usb1 {
@@ -759,3 +764,23 @@ And public attribution of xiaomi platforms(like J2 and so and)
 		};
 	};
 };
+/* support CONFIG_PSTORE_RAM
+&reserved_memory {
+    ramoops: ramoops@0xE9700000 {
+        compatible = "ramoops";
+        reg = <0 0xE9700000 0 0x05B8000>; //5M + 736k
+        record-size =  <0x40000>; //256k
+        console-size = <0x40000>; //256k
+        ftrace-size =  <0x200000>; //2M
+        pmsg-size=     <0x200000>; //2M
+        devinfo-size=  <0x08000>;  //32k
+        dumpinfo-size=  <0x08000>; //32k
+        rsv01info-size=  <0x08000>; //32k
+        rsv02info-size=  <0x08000>; //32k
+        rsv03info-size=  <0x08000>; //32k
+        rsv04info-size=  <0x08000>; //32k
+        rsv05info-size=  <0x08000>; //32k
+        ecc-size=      <0x0>;
+    };
+};
+*/
